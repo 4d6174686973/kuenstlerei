@@ -7,7 +7,7 @@ export default function NotFound() {
         Der angeforderte Kurs existiert nicht oder wurde verschoben.
       </p>
       <a
-        href="/kurse"
+        href="/kursprogramm"
         className="inline-block px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"
       >
         Zurück zu allen Kursen

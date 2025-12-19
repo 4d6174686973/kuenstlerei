@@ -8,12 +8,13 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <span className="font-semibold">Logo</span>
             <nav className="flex gap-4">
-              <Link href="/imprint">Imprint</Link>
-              <Link href="/privacy">Privacy</Link>
+              <Link href="/impressum">Impressum</Link>
+              <Link href="/datenschutz">Datenschutz</Link>
+              <Link href="/agb">AGB</Link>
             </nav>
           </div>
 
-          <span className="opacity-70">© {new Date().getFullYear()}</span>
+          <span className="opacity-70">© {new Date().getFullYear()} Kunstakademie Würselen e.V.</span>
         </div>
       </div>
     </footer>
