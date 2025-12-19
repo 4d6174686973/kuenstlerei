@@ -6,9 +6,11 @@ export const KURSE_LIST_QUERY = `
     name,
     altersempfehlung,
     wochentag,
+    kursleitung,
     preis,
     "slug": slug.current,
-"sessions": sessions[] | order(datum asc),
+    "image": image.asset->url,
+    "sessions": sessions[] | order(datum asc),
     "firstDate": (sessions[] | order(datum asc))[0].datum,
     "lastDate": (sessions[] | order(datum asc))[-1].datum,
     "isFinished": (sessions[] | order(datum asc))[-1].datum < now(),
@@ -19,15 +21,16 @@ export const KURS_DETAIL_QUERY = `
   *[_type == "kursprogramm" && slug.current == $slug] {
     _id,
     name,
+    "image": image.asset->url,
     altersempfehlung,
     wochentag,
+    kursleitung,
     preis,
     beschreibung,
     "sessions": sessions[] | order(datum asc) {
       datum,
       startUhrzeit,
-      endUhrzeit,
-      kuenstlerin
+      endUhrzeit
     },
     "firstDate": (sessions[] | order(datum asc))[0].datum,
     "lastDate": (sessions[] | order(datum asc))[-1].datum,

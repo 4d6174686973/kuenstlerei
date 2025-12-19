@@ -35,6 +35,13 @@ export default async function KursDetailPage({ params }: PageProps) {
           {hasSessions ? dateRange : "Termine folgen bald"}
         </p>
 
+        {/* Kursleitung */}
+        {kurs.kursleitung && (
+          <p className="text-gray-700 mb-6 text-lg">
+            <span className="font-semibold">Kursleitung:</span> {kurs.kursleitung}
+          </p>
+        )}
+
         {/* Badge-Leiste - Gleiche Farben wie in den CardItems */}
         <div className="flex gap-2 mb-10 flex-wrap">
           <Badge className="rounded-none bg-slate-100 text-slate-600 hover:bg-slate-100 border-none px-3 py-1">
@@ -67,12 +74,12 @@ export default async function KursDetailPage({ params }: PageProps) {
 
         {/* Sessions Sektion */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-8 tracking-wide">Termine</h2>
+          <h2 className="text-2xl font-bold mb-4">Termine</h2>
           <div className="space-y-0">
             {kurs.sessions?.map((session: any, i: number) => (
               <div 
                 key={i} 
-                className="py-6 border-b border-gray-100 last:border-0 flex flex-col md:flex-row md:justify-between md:items-center gap-4"
+                className="py-4 border-b border-gray-100 last:border-0 flex flex-col md:flex-row md:justify-between md:items-center gap-4"
               >
                 <div>
                   <p className="font-bold text-lg">
@@ -87,12 +94,6 @@ export default async function KursDetailPage({ params }: PageProps) {
                     {session.startUhrzeit} – {session.endUhrzeit} Uhr
                   </p>
                 </div>
-                
-                {session.kuenstlerin && (
-                  <div className="text-sm text-gray-500 bg-gray-50 px-3 py-1 self-start md:self-center">
-                    Leitung: <span className="font-medium text-gray-700">{session.kuenstlerin}</span>
-                  </div>
-                )}
               </div>
             ))}
           </div>

@@ -13,7 +13,7 @@ export default async function KursprogrammPage() {
   const kurse = await client.fetch(KURSE_LIST_QUERY);
 
   return (
-    <main className="max-w-6xl mx-auto py-12 px-4">
+    <main className="max-w-6xl mx-auto px-4">
       <h1 className="text-4xl font-bold mb-12">Kursprogramm</h1>
 
       <div className="grid md:grid-cols-2 gap-10">

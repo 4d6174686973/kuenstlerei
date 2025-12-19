@@ -14,9 +14,11 @@ export default defineType({
       options: { source: "name", maxLength: 96 },
       validation: (Rule) => Rule.required()
     }),
+    defineField({name: 'image', title: 'Kursbild (Thumbnail)', type: 'image', options: {hotspot: true}}),
     defineField({ name: "altersempfehlung", title: "Altersempfehlung", type: "string", placeholder: "z.B. 7-9 Jahre" }),
     defineField({ name: "preis", title: "Preis (€)", type: "number" }),
     defineField({ name: "wochentag", title: "Wochentag", type: "string", placeholder: "z.B. Mittwochs" }),
+    defineField({ name: "kursleitung", title: "Kursleitung", type: "string"}),
     defineField({ name: "beschreibung", title: "Beschreibung", type: "text" }),
     defineField({
       name: "sessions",
@@ -29,8 +31,7 @@ export default defineType({
           fields: [
             { name: "datum", title: "Datum", type: "date", placeholder: "z.B. 2025-12-19", validation: (Rule) => Rule.required() },
             { name: "startUhrzeit", title: "Startzeit", type: "string", placeholder: "z.B. 14:00", validation: (Rule) => Rule.required() },
-            { name: "endUhrzeit", title: "Endzeit", type: "string", placeholder: "z.B. 16:00", validation: (Rule) => Rule.required() },
-            { name: "kuenstlerin", title: "Künstlerin", type: "string" },
+            { name: "endUhrzeit", title: "Endzeit", type: "string", placeholder: "z.B. 16:00", validation: (Rule) => Rule.required() }
           ],
           preview: {
             select: { title: "datum", subtitle: "startUhrzeit" }

@@ -22,7 +22,7 @@ export default function CardItem({
 }: CardItemProps) {
   return (
     <Card className="rounded-none"> 
-      <CardContent className="flex gap-4 p-4">
+      <CardContent className="flex gap-6 px-6">
         {imageUrl && (
           <div className="relative w-24 h-24 flex-shrink-0">
             <Image
