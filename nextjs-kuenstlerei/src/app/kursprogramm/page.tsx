@@ -59,7 +59,7 @@ export default async function KursprogrammPage() {
             >
               <CardItem
                 title={kurs.name}
-                date={dateString}
+                subtitle={dateString}
                 imageUrl={kurs.image}
                 badges={dynamicBadges}
               />

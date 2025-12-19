@@ -37,3 +37,13 @@ export const KURS_DETAIL_QUERY = `
     "isFinished": (sessions[] | order(datum asc))[-1].datum < now()
   }[0]
 `;
+
+export const PROJEKTE_LIST_QUERY = `
+  *[_type == "projekte"] | order(name asc) {
+    _id,
+    name,
+    untertitel,
+    "slug": slug.current,
+    "image": image.asset->url
+  }
+`;

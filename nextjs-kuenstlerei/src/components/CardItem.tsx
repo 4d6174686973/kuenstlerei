@@ -9,14 +9,14 @@ type BadgeData = {
 
 type CardItemProps = {
   title: string;
-  date: string;
+  subtitle: string;
   imageUrl?: string;
   badges?: BadgeData[]; // Changed to object array
 };
 
 export default function CardItem({
   title,
-  date,
+  subtitle,
   imageUrl,
   badges = [],
 }: CardItemProps) {
@@ -36,7 +36,7 @@ export default function CardItem({
 
         <div className="flex flex-col gap-2">
           <h3 className="text-xl font-semibold">{title}</h3>
-          <span className="text-xs text-muted-foreground">{date}</span>
+          <span className="text-xs text-muted-foreground">{subtitle}</span>
 
           <div className="flex gap-2 flex-wrap">
             {badges.map((badge, index) => (
