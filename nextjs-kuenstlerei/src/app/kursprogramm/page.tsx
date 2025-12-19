@@ -26,7 +26,7 @@ export default async function KursprogrammPage() {
           // Basis-Badges (Alter und Preis)
           const dynamicBadges = [
             { 
-              text: `${kurs.altersempfehlung} J.`, 
+              text: `${kurs.altersempfehlung}`, 
               className: "bg-slate-100 text-slate-600 hover:bg-slate-100" 
             },
             { 
@@ -54,7 +54,7 @@ export default async function KursprogrammPage() {
           return (
             <Link
               key={kurs._id}
-              href={`/kursprogramm/${kurs.slug.current}`}
+              href={`/kursprogramm/${kurs.slug}`}
               className="hover:opacity-80 transition block"
             >
               <CardItem
