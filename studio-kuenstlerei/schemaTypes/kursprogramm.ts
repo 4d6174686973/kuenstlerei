@@ -1,8 +1,8 @@
 import { defineType, defineField } from "sanity";
 
 export default defineType({
-  name: "kurs",
-  title: "Kurs",
+  name: "kursprogramm",
+  title: "Kursprogramm",
   type: "document",
   fields: [
     defineField({ name: "name", title: "Name", type: "string", validation: (Rule) => Rule.required() }),
@@ -58,14 +58,5 @@ export default defineType({
         },
       ],
     }),
-    defineField({ name: "kontakt", title: "Kontakt", type: "object", fields: [
-      { name: "handynummer", title: "Handynummer", type: "string" },
-      { name: "email", title: "Email", type: "string" },
-      { name: "adresse", title: "Adresse", type: "object", fields: [
-        { name: "strasse", title: "Straße", type: "string" },
-        { name: "plz", title: "PLZ", type: "string" },
-        { name: "stadt", title: "Stadt", type: "string" }
-      ]}
-    ]}),
   ]
 });

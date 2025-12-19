@@ -1,7 +1,7 @@
 // src/lib/sanity.queries.ts
 
 export const KURSE_LIST_QUERY = `
-  *[_type == "kurs" && defined(slug.current)] | order(startDatum asc) {
+  *[_type == "kursprogramm" && defined(slug.current)] | order(startDatum asc) {
     _id,
     name,
     altersempfehlung,
@@ -12,7 +12,7 @@ export const KURSE_LIST_QUERY = `
 `;
 
 export const KURS_DETAIL_QUERY = `
-  *[_type == "kurs" && slug.current == $slug] {
+  *[_type == "kursprogramm" && slug.current == $slug] {
     _id,
     name,
     altersempfehlung,
@@ -25,14 +25,5 @@ export const KURS_DETAIL_QUERY = `
       endUhrzeit,
       kuenstlerin
     },
-    kontakt {
-      handynummer,
-      email,
-      adresse {
-        strasse,
-        plz,
-        stadt
-      }
-    }
   }[0]
 `;
