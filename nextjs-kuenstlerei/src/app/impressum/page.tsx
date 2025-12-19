@@ -5,7 +5,7 @@ export const metadata = {
 export default function ImpressumPage() {
   return (
     <section className="max-w-3xl">
-        <h1 className="text-3xl font-bold mb-6">Impressum</h1>
+        <h1 className="text-4xl font-bold mb-6">Impressum</h1>
         <p className="mb-6">
             Kunstakademie Würselen e.V. <br />
             Kaiserstraße 29 <br />

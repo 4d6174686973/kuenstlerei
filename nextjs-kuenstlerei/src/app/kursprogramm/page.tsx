@@ -13,7 +13,7 @@ export default async function KursprogrammPage() {
   const kurse = await client.fetch(KURSE_LIST_QUERY);
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
+    <main className="max-w-6xl">
       <h1 className="text-4xl font-bold mb-12">Kursprogramm</h1>
 
       <div className="grid md:grid-cols-2 gap-10">
@@ -21,13 +21,22 @@ export default async function KursprogrammPage() {
           <Link
             key={kurs._id}
             href={`/kursprogramm/${kurs.slug}`}
-            className="hover:shadow-lg transition rounded-2xl"
+            className="hover:opacity-80 transition"
           >
             <CardItem
               title={kurs.name}
               date={new Date(kurs.startDatum).toLocaleDateString("de-DE")}
-              imageUrl={kurs.image} // optional image field
-              badges={[`${kurs.altersempfehlung} Jahre`, `${kurs.preis} €`]}
+              imageUrl={kurs.image}
+              badges={[
+                { 
+                  text: `${kurs.altersempfehlung}`, 
+                  className: "bg-slate-100 text-slate-600 hover:bg-slate-100" // Neutral Gray/Slate
+                },
+                { 
+                  text: `${kurs.preis} €`, 
+                  className: "bg-stone-200 text-stone-700 hover:bg-stone-200" // Neutral Stone/Sand
+                }
+              ]}
             />
           </Link>
         ))}

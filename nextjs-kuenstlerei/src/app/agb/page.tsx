@@ -5,7 +5,7 @@ export const metadata = {
 export default function AGBPage() {
   return (
     <main className="max-w-3xl">
-      <h1 className="text-3xl font-bold mb-8">
+      <h1 className="text-4xl font-bold mb-8">
         Allgemeine Geschäftsbedingungen
       </h1>
 

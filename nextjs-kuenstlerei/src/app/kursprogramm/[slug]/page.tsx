@@ -3,7 +3,6 @@ import { client } from "@/lib/sanity.client";
 import { KURS_DETAIL_QUERY } from "@/lib/sanity.queries";
 import { notFound } from "next/navigation";
 
-// Force dynamic SSR (no rebuilds, instant slugs)
 export const dynamic = "force-dynamic";
 
 type PageProps = {
@@ -21,9 +20,10 @@ export default async function KursDetailPage({ params }: PageProps) {
     }
 
     return (
-      <main className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-4xl font-semibold mb-4">{kurs.name}</h1>
+      <main className="max-w-3xl">
 
+        <h1 className="text-4xl font-bold mb-6">{kurs.name}</h1>
+        
         <div className="text-gray-600 mb-8 space-y-1">
           <p>Alter: {kurs.altersempfehlung}</p>
           <p>
@@ -32,37 +32,29 @@ export default async function KursDetailPage({ params }: PageProps) {
           <p className="font-semibold">{kurs.preis} €</p>
         </div>
 
-        <p className="mb-12 leading-relaxed">{kurs.beschreibung}</p>
+        <p className="mb-12 leading-relaxed text-lg text-gray-800 border-l-3 border-gray-300 pl-4">
+            {kurs.beschreibung}
+        </p>
 
         <section className="mb-16">
-          <h2 className="text-2xl mb-6">Sessions</h2>
+          <h2 className="text-2xl font-bold mb-6">Sessions</h2>
           <div className="space-y-4">
             {kurs.sessions?.map((session: any, i: number) => (
-              <div key={i} className="border rounded-xl p-4">
-                <p>
-                  {new Date(session.datum).toLocaleDateString("de-DE")} –{" "}
-                  {session.startUhrzeit} bis {session.endUhrzeit}
+              <div key={i} className="pb-4">
+                <p className="font-medium">
+                  {new Date(session.datum).toLocaleDateString("de-DE")}
                 </p>
-                <p className="text-sm text-gray-600">
-                  Künstlerin: {session.kuenstlerin}
+                <p className="text-gray-600">
+                  {session.startUhrzeit} bis {session.endUhrzeit} Uhr
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Leitung: {session.kuenstlerin}
                 </p>
               </div>
             ))}
           </div>
         </section>
 
-        <section>
-          <h2 className="text-2xl mb-6">Kontakt</h2>
-          <div className="border rounded-xl p-6 space-y-2">
-            <p>Telefon: {kurs.kontakt?.handynummer}</p>
-            <p>Email: {kurs.kontakt?.email}</p>
-            <p>
-              Adresse: {kurs.kontakt?.adresse?.strasse},{" "}
-              {kurs.kontakt?.adresse?.plz}{" "}
-              {kurs.kontakt?.adresse?.stadt}
-            </p>
-          </div>
-        </section>
       </main>
     );
   } catch (error) {

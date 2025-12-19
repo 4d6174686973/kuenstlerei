@@ -2,11 +2,16 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
+type BadgeData = {
+  text: string;
+  className?: string;
+};
+
 type CardItemProps = {
   title: string;
   date: string;
   imageUrl?: string;
-  badges?: string[];
+  badges?: BadgeData[]; // Changed to object array
 };
 
 export default function CardItem({
@@ -16,7 +21,7 @@ export default function CardItem({
   badges = [],
 }: CardItemProps) {
   return (
-    <Card>
+    <Card className="rounded-none"> 
       <CardContent className="flex gap-4 p-4">
         {imageUrl && (
           <div className="relative w-24 h-24 flex-shrink-0">
@@ -24,19 +29,23 @@ export default function CardItem({
               src={imageUrl}
               alt={title}
               fill
-              className="object-cover rounded"
+              className="object-cover rounded-none"
             />
           </div>
         )}
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-semibold">{title}</h3>
+          <h3 className="text-xl font-semibold">{title}</h3>
           <span className="text-xs text-muted-foreground">{date}</span>
 
           <div className="flex gap-2 flex-wrap">
-            {badges.map((badge) => (
-              <Badge key={badge} variant="secondary">
-                {badge}
+            {badges.map((badge, index) => (
+              <Badge 
+                key={index} 
+                variant="secondary"
+                className={`rounded-none font-normal ${badge.className}`}
+              >
+                {badge.text}
               </Badge>
             ))}
           </div>

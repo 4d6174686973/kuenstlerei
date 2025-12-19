@@ -5,7 +5,7 @@ export const metadata = {
 export default function KontaktPage() {
   return (
     <section className="max-w-3xl">
-      <h1 className="text-3xl font-bold mb-6">Kontakt</h1>
+      <h1 className="text-4xl font-bold mb-6">Kontakt</h1>
 
       <div className="space-y-4">
         <p>
