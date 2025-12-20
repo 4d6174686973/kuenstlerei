@@ -17,8 +17,8 @@ const navLinks = [
   { href: "/kursprogramm", label: "Kursprogramm" },
   { href: "/projekte", label: "Projekte" },
   { href: "/neu", label: "Neu" },
-  { href: "/kontakt", label: "Kontakt" },
   { href: "/ueber-uns", label: "Über Uns" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
 
 export default function Header() {
