@@ -34,7 +34,15 @@ export const KURS_DETAIL_QUERY = `
     },
     "firstDate": (sessions[] | order(datum asc))[0].datum,
     "lastDate": (sessions[] | order(datum asc))[-1].datum,
-    "isFinished": (sessions[] | order(datum asc))[-1].datum < now()
+    "isFinished": (sessions[] | order(datum asc))[-1].datum < now(),
+    "verknuepfteNews": *[_type == "neu" && verlinkung._ref == ^._id] | order(publishDate desc) {
+      _id,
+      titel,
+      "slug": slug.current,
+      publishDate,
+      kategorien,
+      "imageUrl": image.asset->url
+    }
   }[0]
 `;
 

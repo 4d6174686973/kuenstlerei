@@ -2,6 +2,8 @@ import { client } from "@/lib/sanity.client";
 import { KURS_DETAIL_QUERY } from "@/lib/sanity.queries";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -15,11 +17,8 @@ export default async function KursDetailPage({ params }: PageProps) {
   try {
     const kurs = await client.fetch(KURS_DETAIL_QUERY, { slug });
 
-    if (!kurs) {
-      notFound();
-    }
+    if (!kurs) notFound();
 
-    // Datums-Formatierung für die Anzeige unter dem Titel
     const hasSessions = kurs.sessions && kurs.sessions.length > 0;
     const start = hasSessions ? new Date(kurs.firstDate).toLocaleDateString("de-DE") : "";
     const end = hasSessions ? new Date(kurs.lastDate).toLocaleDateString("de-DE") : "";
@@ -27,10 +26,18 @@ export default async function KursDetailPage({ params }: PageProps) {
 
     return (
       <main className="max-w-3xl mx-auto px-4 py-12">
+        {/* 1. Zurück-Link GANZ OBEN */}
+        <Link 
+          href="/kursprogramm" 
+          className="flex items-center text-sm text-gray-500 hover:text-black transition mb-8 group"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+          Zurück zum Kursprogramm
+        </Link>
+
         {/* Titel Sektion */}
         <h1 className="text-4xl font-bold mb-4">{kurs.name}</h1>
         
-        {/* Dynamische Datumsanzeige (analog zur Card) */}
         <p className="text-gray-500 mb-6 text-lg">
           {hasSessions ? dateRange : "Termine folgen bald"}
         </p>
@@ -42,22 +49,19 @@ export default async function KursDetailPage({ params }: PageProps) {
           </p>
         )}
 
-        {/* Badge-Leiste - Gleiche Farben wie in den CardItems */}
+        {/* Badge-Leiste */}
         <div className="flex gap-2 mb-10 flex-wrap">
           <Badge className="rounded-none bg-slate-100 text-slate-600 hover:bg-slate-100 border-none px-3 py-1">
             {kurs.altersempfehlung}
           </Badge>
-          
           <Badge className="rounded-none bg-stone-200 text-stone-700 hover:bg-stone-200 border-none px-3 py-1">
             {kurs.preis} €
           </Badge>
-
           {kurs.wochentag && (
             <Badge className="rounded-none bg-blue-50 text-blue-700 hover:bg-blue-50 border-none px-3 py-1">
               {kurs.wochentag}
             </Badge>
           )}
-
           {kurs.isFinished && (
             <Badge className="rounded-none bg-red-50 text-red-700 border border-red-100 hover:bg-red-50 px-3 py-1">
               Kurs beendet
@@ -84,10 +88,7 @@ export default async function KursDetailPage({ params }: PageProps) {
                 <div>
                   <p className="font-bold text-lg">
                     {new Date(session.datum).toLocaleDateString("de-DE", {
-                      weekday: 'long',
-                      day: '2-digit',
-                      month: 'long',
-                      year: 'numeric'
+                      weekday: 'long', day: '2-digit', month: 'long', year: 'numeric'
                     })}
                   </p>
                   <p className="text-gray-600 italic">
@@ -99,12 +100,33 @@ export default async function KursDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Optionaler Back-Link */}
-        <div className="mt-12 pt-8 border-t border-gray-100">
-          <a href="/kursprogramm" className="text-gray-500 hover:text-black transition-colors underline underline-offset-4">
-            ← Zurück zum Kursprogramm
-          </a>
-        </div>
+        {/* 2. VERKNÜPFTE NEUIGKEITEN UNTEN */}
+        {kurs.verknuepfteNews && kurs.verknuepfteNews.length > 0 && (
+          <section className="mt-20 pt-12 border-t border-gray-100">
+            <h2 className="text-2xl font-bold mb-8">Neuigkeiten zu diesem Kurs</h2>
+            <div className="space-y-4">
+              {kurs.verknuepfteNews.map((news: any) => (
+                <Link 
+                  key={news._id} 
+                  href={`/neu/${news.slug}`}
+                  className="block p-6 bg-slate-50 hover:bg-slate-100 transition border-l-4 border-slate-200"
+                >
+                  <div className="flex gap-2 mb-2">
+                    {news.kategorien?.map((kat: string) => (
+                      <span key={kat} className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                        {kat}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold">{news.titel}</h3>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Vom {new Date(news.publishDate).toLocaleDateString("de-DE")}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
     );
   } catch (error) {
