@@ -4,7 +4,7 @@ export const metadata = {
 
 export default function DatenschutzPage() {
   return (
-    <main className="max-w-3xl">
+    <main className="max-w-3xl min-h-screen">
       <h1 className="text-4xl font-bold mb-8">Datenschutzerklärung</h1>
 
       <section className="mb-10">

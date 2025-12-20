@@ -25,7 +25,7 @@ export default async function KursDetailPage({ params }: PageProps) {
     const dateRange = kurs.firstDate === kurs.lastDate ? start : `${start} – ${end}`;
 
     return (
-      <main className="max-w-3xl mx-auto px-4 py-12">
+      <main className="max-w-3xl mx-auto px-4 py-12 min-h-screen">
         {/* 1. Zurück-Link GANZ OBEN */}
         <Link 
           href="/kursprogramm" 

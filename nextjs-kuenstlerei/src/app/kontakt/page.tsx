@@ -9,7 +9,7 @@ export default function KontaktPage() {
   const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.671392813158!2d6.131238477144186!3d50.818742861344495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c098d28176335d%3A0x47088989af99036d!2sKaiserstra%C3%9Fe%2029%2C%2052146%20W%C3%BCrselen!5e0!3m2!1sde!2sde!4v1715600000000!5m2!1sde!2sde";
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12">
+    <section className="max-w-6xl mx-auto px-4 py-12 min-h-screen">
       <h1 className="text-4xl font-bold mb-10">Kontakt</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

@@ -16,7 +16,7 @@ export default async function NeuigkeitDetailPage({ params }: PageProps) {
   if (!news) notFound();
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12">
+    <main className="max-w-4xl mx-auto px-4 py-12 min-h-screen">
       {/* 1. Zurück zu allen */}
       <Link href="/neu" className="flex items-center text-sm text-gray-500 hover:text-black transition mb-8 group">
         <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />

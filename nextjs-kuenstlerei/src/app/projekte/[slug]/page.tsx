@@ -15,7 +15,7 @@ export default async function ProjektDetailPage({ params }: PageProps) {
   if (!projekt) notFound();
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-16">
+    <main className="max-w-4xl mx-auto px-4 py-16 min-h-screen">
       {/* 1. Titel & Untertitel */}
       <header className="mb-12">
         <h1 className="text-5xl font-bold mb-4">{projekt.name}</h1>
