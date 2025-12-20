@@ -47,3 +47,25 @@ export const PROJEKTE_LIST_QUERY = `
     "image": image.asset->url
   }
 `;
+
+export const PROJEKT_DETAIL_QUERY = `
+  *[_type == "projekte" && slug.current == $slug][0] {
+    _id,
+    name,
+    untertitel,
+    beschreibung,
+    image,
+    projektpartner[] {
+      partnerName,
+      partnerLink,
+      "logoUrl": partnerLogo.asset->url
+    },
+    "verknuepfteNews": *[_type == "neu" && verlinkung._ref == ^._id] | order(publishDate desc) {
+      _id,
+      titel,
+      "slug": slug.current,
+      publishDate,
+      kategorien
+    }
+  }
+`;
