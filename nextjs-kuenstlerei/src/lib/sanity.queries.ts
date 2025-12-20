@@ -96,3 +96,19 @@ export const NEU_LIST_QUERY = `
     "verbindungTyp": verlinkung->_type
   }
 `;
+
+export const NEU_DETAIL_QUERY = `
+  *[_type == "neu" && slug.current == $slug][0] {
+    titel,
+    publishDate,
+    eventDate,
+    kategorien,
+    beschreibung,
+    "galerie": fotogalerie[].asset->url,
+    "referenz": verlinkung-> {
+      name,
+      "slug": slug.current,
+      _type
+    }
+  }
+`;

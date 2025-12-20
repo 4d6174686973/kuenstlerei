@@ -65,7 +65,7 @@ export default async function ProjektDetailPage({ params }: PageProps) {
             {projekt.verknuepfteNews.map((news: any) => (
               <Link
                 key={news._id}
-                href={`/neuigkeiten/${news.slug}`}
+                href={`/neu/${news.slug}`}
                 className="block p-6 bg-slate-50 hover:bg-slate-100 transition border-l-4 border-slate-200"
               >
                 <h3 className="text-xl font-bold">{news.titel}</h3>

@@ -14,6 +14,7 @@ export default function NeuigkeitenClient({ initialData }: { initialData: any[] 
   const [filter, setFilter] = useState("all");
   const [selectedKat, setSelectedKat] = useState<string | null>(null);
   const [selectedRef, setSelectedRef] = useState<string>("all"); // Filter for Projekt/Kurs
+  const [limit, setLimit] = useState(10);
 
   // 1. Extract unique Categories
   const categories = useMemo(() => {
@@ -52,6 +53,8 @@ export default function NeuigkeitenClient({ initialData }: { initialData: any[] 
       return matchesSearch && matchesDate && matchesKat && matchesRef;
     });
   }, [search, filter, selectedKat, selectedRef, initialData]);
+
+  const displayedData = filteredData.slice(0, limit);
 
   return (
     <div className="flex flex-col md:flex-row gap-12">
@@ -154,37 +157,54 @@ export default function NeuigkeitenClient({ initialData }: { initialData: any[] 
 
       {/* LIST */}
       <div className="flex-1 space-y-8">
-        {filteredData.length > 0 ? (
-          filteredData.map((item) => {
-             // ... dynamic badges logic remains the same as previous step
-             const badges = (item.kategorien || []).map((k: string) => ({
-              text: k,
-              className: "bg-slate-100 text-slate-600 hover:bg-slate-100"
-            }));
-            if (item.eventDate) {
-              badges.push({
-                text: `Event: ${new Date(item.eventDate).toLocaleDateString("de-DE")}`,
-                className: "bg-amber-100 text-amber-700 border-none font-bold"
-              });
-            }
-            if (item.verbindungName) {
-              badges.push({
-                text: item.verbindungName,
-                className: "bg-blue-50 text-blue-600 border-none italic"
-              });
-            }
+        {displayedData.length > 0 ? (
+          <>
+            {/* 1. Mappe über die gekürzte Liste 'displayedData' */}
+            {displayedData.map((item) => {
+              const badges = (item.kategorien || []).map((k: string) => ({
+                text: k,
+                className: "bg-slate-100 text-slate-600 hover:bg-slate-100"
+              }));
 
-            return (
-              <Link key={item._id} href={`/neu/${item.slug}`} className="block hover:opacity-90 transition">
-                <CardItem
-                  title={item.titel}
-                  subtitle={`Gepostet am ${new Date(item.publishDate).toLocaleDateString("de-DE")}`}
-                  imageUrl={item.image}
-                  badges={badges}
-                />
-              </Link>
-            );
-          })
+              if (item.eventDate) {
+                badges.push({
+                  text: `Event: ${new Date(item.eventDate).toLocaleDateString("de-DE")}`,
+                  className: "bg-amber-100 text-amber-700 border-none font-bold"
+                });
+              }
+
+              if (item.verbindungName) {
+                badges.push({
+                  text: item.verbindungName,
+                  className: "bg-blue-50 text-blue-600 border-none italic"
+                });
+              }
+
+              return (
+                <Link key={item._id} href={`/neu/${item.slug}`} className="block hover:opacity-90 transition">
+                  <CardItem
+                    title={item.titel}
+                    subtitle={`Veröffentlicht am ${new Date(item.publishDate).toLocaleDateString("de-DE")}`}
+                    imageUrl={item.image}
+                    badges={badges}
+                  />
+                </Link>
+              );
+            })}
+
+            {/* 2. Button erscheint nach der Liste, wenn gefilterte Ergebnisse > Limit */}
+            {filteredData.length > limit && (
+              <div className="flex justify-center pt-8">
+                <Button 
+                  variant="outline" 
+                  className="rounded-none px-12 border-gray-200 text-xs uppercase tracking-widest hover:bg-gray-50"
+                  onClick={() => setLimit(prev => prev + 6)}
+                >
+                  Mehr laden
+                </Button>
+              </div>
+            )}
+          </>
         ) : (
           <div className="py-20 text-center border-2 border-dashed border-gray-100">
             <p className="text-gray-400 italic mb-4">Keine Treffer für diese Filterkombination.</p>
