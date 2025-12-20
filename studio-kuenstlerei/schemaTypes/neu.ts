@@ -5,77 +5,33 @@ export default defineType({
   title: "Neu",
   type: "document",
   fields: [
-    defineField({
-      name: "titel",
-      title: "Titel",
-      type: "string",
-      validation: (Rule) => Rule.required(),
+    defineField({ name: "titel", title: "Titel", type: "string", validation: (Rule) => Rule.required() }),
+    defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "titel", maxLength: 96 }, validation: (Rule) => Rule.required() }),
+    defineField({ name: "publishDate", title: "Datum", type: "datetime", initialValue: () => new Date().toISOString(), validation: (Rule) => Rule.required() }),
+    defineField({ name: "image", title: "Thumbnail", type: "image", options: { hotspot: true } }),
+    defineField({ name: "eventDate", title: "Eventdatum", type: "date", description: "Optional" }),
+    defineField({ 
+      name: "kategorien", title: "Kategorien", type: "array", 
+      of: [defineArrayMember({ type: "string" })], 
+      options: { layout: "tags" } 
     }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "titel", maxLength: 96 },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "publishDate",
-      title: "Veröffentlichungsdatum",
-      type: "datetime",
-      initialValue: () => new Date().toISOString(), // Setzt automatisch das aktuelle Datum
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "eventDate",
-      title: "Eventdatum (Optional)",
-      description: "Falls die News ein bestimmtes Event betrifft",
-      type: "date",
-    }),
-    defineField({
-      name: "kategorien",
-      title: "Kategorien",
-      type: "array",
-      of: [defineArrayMember({ type: "string" })],
-      options: {
-        layout: "tags", // Zeigt die Kategorien im Studio als kompakte Tags an
-      },
-    }),
-    defineField({
-      name: "verlinkung",
-      title: "Link zu Projekt oder Kurs",
-      description: "Wähle einen bestehenden Kurs oder ein Projekt aus",
-      type: "reference",
+    defineField({ 
+      name: "verlinkung", title: "Link", type: "reference", 
       to: [{ type: "kursprogramm" }, { type: "projekte" }],
+      description: "Bezug zu Kurs oder Projekt"
     }),
+    defineField({ name: "beschreibung", title: "Beschreibung", type: "text" }),
     defineField({
-      name: "beschreibung",
-      title: "Beschreibung",
-      type: "text",
-    }),
-    defineField({
-      name: "fotogalerie",
-      title: "Fotogalerie",
-      type: "array",
+      name: "fotogalerie", title: "Fotogalerie", type: "array",
       of: [
         defineArrayMember({
-          type: "image",
-          options: { hotspot: true },
-          fields: [
-            {
-              name: "caption",
-              type: "string",
-              title: "Bildunterschrift",
-            },
-          ],
+          type: "image", options: { hotspot: true },
+          fields: [{ name: "caption", type: "string", title: "Bildunterschrift" }]
         }),
       ],
     }),
   ],
   preview: {
-    select: {
-      title: "titel",
-      subtitle: "publishDate",
-      media: "fotogalerie.0", // Zeigt das erste Bild der Galerie als Thumbnail im Studio
-    },
+    select: { title: "titel", subtitle: "publishDate", media: "image" },
   },
 });

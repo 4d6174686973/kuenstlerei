@@ -69,3 +69,15 @@ export const PROJEKT_DETAIL_QUERY = `
     }
   }
 `;
+
+export const TEAM_QUERY = `
+  *[_type == "team"] | order(_createdAt asc) {
+    _id,
+    name,
+    title1,
+    title2,
+    handynummer,
+    email,
+    "fotoUrl": foto.asset->url
+  }
+`;

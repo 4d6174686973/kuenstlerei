@@ -12,6 +12,7 @@ export default function Header() {
           <Link href="/kursprogramm">Kursprogramm</Link>
           <Link href="/projekte">Projekte</Link>
           <Link href="/kontakt">Kontakt</Link>
+          <Link href="/ueber-uns">Über Uns</Link>
         </nav>
       </div>
     </header>
