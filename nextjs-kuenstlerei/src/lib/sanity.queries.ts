@@ -120,3 +120,27 @@ export const NEU_DETAIL_QUERY = `
     }
   }
 `;
+
+// Holt die 3 neuesten News/Beiträge
+export const HOME_LATEST_NEWS_QUERY = `
+  *[_type == "neu"] | order(publishDate desc)[0...3] {
+    _id,
+    titel,
+    "slug": slug.current,
+    publishDate,
+    kategorien,
+    "image": image.asset->url
+  }
+`;
+
+// Holt zukünftige Events (Beiträge mit eventDate in der Zukunft)
+export const HOME_UPCOMING_EVENTS_QUERY = `
+  *[_type == "neu" && defined(eventDate) && eventDate >= now()] | order(eventDate asc)[0...2] {
+    _id,
+    titel,
+    "slug": slug.current,
+    eventDate,
+    beschreibung,
+    kategorien
+  }
+`;

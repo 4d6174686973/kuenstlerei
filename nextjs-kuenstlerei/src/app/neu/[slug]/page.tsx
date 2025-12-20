@@ -50,6 +50,11 @@ export default async function NeuigkeitDetailPage({ params }: PageProps) {
           </div>
         </header>
 
+        {/* Beschreibung & Referenz */}
+        <section className="prose prose-lg max-w-none text-gray-800 leading-relaxed mb-16">
+          <div className="whitespace-pre-wrap">{news.beschreibung}</div>
+        </section>
+
         {/* Galerie */}
         {news.galerie && news.galerie.length > 0 && (
           <section className="mb-12">
@@ -63,11 +68,6 @@ export default async function NeuigkeitDetailPage({ params }: PageProps) {
           </section>
         )}
 
-        {/* Beschreibung & Referenz */}
-        <section className="prose prose-lg max-w-none text-gray-800 leading-relaxed mb-16">
-          <div className="whitespace-pre-wrap">{news.beschreibung}</div>
-        </section>
-
         {/* Referenz-Box (Link zu Kurs/Projekt) */}
         {news.referenz && (
           <section className="p-8 border border-gray-100 bg-slate-50 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -76,7 +76,7 @@ export default async function NeuigkeitDetailPage({ params }: PageProps) {
               <h3 className="text-xl font-bold">{news.referenz.name}</h3>
             </div>
             <Link 
-              href={`/${news.referenz._type === "kursprogramm" ? "kurse" : "projekte"}/${news.referenz.slug}`}
+              href={`/${news.referenz._type === "kursprogramm" ? "kursprogramm" : "projekte"}/${news.referenz.slug}`}
               className="flex items-center bg-black text-white px-6 py-3 hover:bg-gray-800 transition text-sm uppercase tracking-widest"
             >
               Zum {news.referenz._type === "kursprogramm" ? "Kurs" : "Projekt"}
