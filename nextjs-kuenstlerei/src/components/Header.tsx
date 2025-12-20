@@ -11,6 +11,7 @@ export default function Header() {
         <nav className="flex gap-6 text-sm">
           <Link href="/kursprogramm">Kursprogramm</Link>
           <Link href="/projekte">Projekte</Link>
+          <Link href="/neu">Neu</Link>
           <Link href="/kontakt">Kontakt</Link>
           <Link href="/ueber-uns">Über Uns</Link>
         </nav>

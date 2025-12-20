@@ -81,3 +81,18 @@ export const TEAM_QUERY = `
     "fotoUrl": foto.asset->url
   }
 `;
+
+export const NEU_LIST_QUERY = `
+  *[_type == "neu"] | order(publishDate desc) {
+    _id,
+    titel,
+    "slug": slug.current,
+    publishDate,
+    eventDate,
+    beschreibung,
+    kategorien,
+    "image": image.asset->url,
+    "verbindungName": verlinkung->name,
+    "verbindungTyp": verlinkung->_type
+  }
+`;
