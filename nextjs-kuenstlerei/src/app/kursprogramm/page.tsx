@@ -16,7 +16,7 @@ export default async function KursprogrammPage() {
     <main className="max-w-6xl mx-auto px-4 min-h-screen">
       <h1 className="text-4xl font-bold mb-12">Kursprogramm</h1>
 
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid lg:grid-cols-2 gap-10">
         {kurse.map((kurs: any) => {
           // Datums-Formatierung
           const start = new Date(kurs.firstDate).toLocaleDateString("de-DE");
