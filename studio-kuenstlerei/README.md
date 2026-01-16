@@ -9,6 +9,11 @@ Now you can do the following things:
 - [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
 
 ## Note to myself
+How to run dev mode
+```sh
+pnpm dev
+```
+
 Always redeploy after changing schema:
 ```sh
 npm run deploy
