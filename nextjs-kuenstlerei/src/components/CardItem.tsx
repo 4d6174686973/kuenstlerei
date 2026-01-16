@@ -26,7 +26,7 @@ export default function CardItem({
         
         {/* BILD-CONTAINER */}
         {imageUrl && (
-          <div className="p-6 pr-0 flex-shrink-0 flex justify-center md:justify-start">
+          <div className="p-6 flex-shrink-0 flex justify-center md:justify-start">
             <div className="relative w-40 h-40 aspect-square overflow-hidden bg-gray-50">
               <Image
                 src={imageUrl}

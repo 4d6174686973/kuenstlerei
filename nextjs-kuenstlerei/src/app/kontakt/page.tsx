@@ -4,6 +4,8 @@ export const metadata = {
   title: 'Kontakt | Künstlerei',
 };
 
+export const dynamic = "force-dynamic";
+
 export default function KontaktPage() {
   // Der direkte Embed-Link für die Adresse (Kaiserstraße 29, Würselen)
   const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.671392813158!2d6.131238477144186!3d50.818742861344495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c098d28176335d%3A0x47088989af99036d!2sKaiserstra%C3%9Fe%2029%2C%2052146%20W%C3%BCrselen!5e0!3m2!1sde!2sde!4v1715600000000!5m2!1sde!2sde";
