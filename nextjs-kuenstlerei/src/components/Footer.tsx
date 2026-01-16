@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Haupt-Bereich: Grid-Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 md:mx-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           
           {/* 1. Spalte: Branding & Mission */}
           <div className="space-y-4">
@@ -17,8 +17,8 @@ export default function Footer() {
               <Image 
                 src="/logo_invers.png"
                 alt="Kunstakademie Würselen Logo"
-                width={150}
-                height={60}
+                width={160}
+                height={100}
                 className="mb-2"
               />
             </Link>

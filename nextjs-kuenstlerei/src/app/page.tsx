@@ -25,7 +25,6 @@ export default async function IndexPage() {
         />
         <div className="max-w-2xl">
           <p className="text-xl md:text-2xl leading-tight mb-8 text-slate-700">
-            Die Künstlerei <br />
             Kunstschule für Groß und Klein im Zentrum von Würselen. <br /><br />
             Mach dir dein eigenes Bild!
           </p>
@@ -74,7 +73,7 @@ export default async function IndexPage() {
 
       {/* --- LETZTE BEITRÄGE LISTE --- */}
       <section>
-        <h2 className="text-3xl font-bold uppercase tracking-tight mb-10">Aktuelles aus der Künstlerei</h2>
+        <h2 className="text-4xl font-bold tracking-tight mb-16">Aktuelles aus der Künstlerei</h2>
         <div className="divide-y divide-gray-100">
           {latestNews.map((post: any) => (
             <Link 
