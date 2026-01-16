@@ -144,3 +144,17 @@ export const HOME_UPCOMING_EVENTS_QUERY = `
     kategorien
   }
 `;
+
+export const ANGEBOTE_LIST_QUERY = `*[_type == "angebote"] | order(_createdAt desc) {
+  _id,
+  titel,
+  "slug": slug.current,
+  beschreibung,
+  "imageUrl": thumbnail.asset->url
+}`;
+
+export const ANGEBOT_DETAIL_QUERY = `*[_type == "angebote" && slug.current == $slug][0] {
+  ...,
+  "imageUrl": thumbnail.asset->url,
+  "galerie": fotogalerie[].asset->url
+}`;

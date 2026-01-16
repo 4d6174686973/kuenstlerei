@@ -13,7 +13,7 @@ export default async function ProjektePage() {
   const projekte = await client.fetch(PROJEKTE_LIST_QUERY);
 
   return (
-    <main className="max-w-6xl mx-auto px-4 min-h-screen">
+    <main className="max-w-6xl mx-auto py-12 min-h-screen">
       <h1 className="text-4xl font-bold mb-12">Projekte</h1>
 
       <div className="grid lg:grid-cols-2 gap-10">

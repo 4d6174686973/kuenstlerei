@@ -10,7 +10,7 @@ export default async function KontaktPage() {
   const team = await client.fetch(TEAM_QUERY);
 
   return (
-    <main className="max-w-3xl min-h-screen">
+    <main className="max-w-3xl py-12 min-h-screen">
       <section className="max-w-3xl mb-16">
         <h1 className="text-4xl font-bold mb-6">Über Uns</h1>
         <div className="space-y-4 text-lg text-gray-700 leading-relaxed">

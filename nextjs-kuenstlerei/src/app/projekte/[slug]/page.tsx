@@ -16,7 +16,7 @@ export default async function ProjektDetailPage({ params }: PageProps) {
   if (!projekt) notFound();
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-16 min-h-screen">
+    <main className="max-w-4xl mx-auto py-16 min-h-screen">
       {/* 1. Zurück zu allen */}
       <Link href="/projekte" className="flex items-center text-sm text-gray-500 hover:text-black transition mb-8 group">
         <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -37,7 +37,7 @@ export default async function ProjektDetailPage({ params }: PageProps) {
       {/* 3. Projektpartner (Karten-Liste) */}
       {projekt.projektpartner && projekt.projektpartner.length > 0 && (
         <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 uppercase tracking-tight">Partner</h2>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Partner</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {projekt.projektpartner.map((partner: any, i: number) => (
               <a

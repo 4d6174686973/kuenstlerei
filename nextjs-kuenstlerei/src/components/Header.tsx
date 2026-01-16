@@ -13,14 +13,7 @@ import {
   SheetDescription
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { href: "/kursprogramm", label: "Kursprogramm" },
-  { href: "/projekte", label: "Projekte" },
-  { href: "/neu", label: "Neu" },
-  { href: "/ueber-uns", label: "Über Uns" },
-  { href: "/kontakt", label: "Kontakt" },
-];
+import { NAV_LINKS } from "@/lib/constants";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -40,7 +33,7 @@ export default function Header() {
 
         {/* DESKTOP NAV - hidden on mobile */}
         <nav className="hidden md:flex gap-8 text-[12px] uppercase tracking-widest font-medium">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link 
               key={link.href} 
               href={link.href} 
@@ -75,7 +68,7 @@ export default function Header() {
               </SheetHeader>
 
               <nav className="flex flex-col gap-6 mt-12">
-                {navLinks.map((link) => (
+                {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
