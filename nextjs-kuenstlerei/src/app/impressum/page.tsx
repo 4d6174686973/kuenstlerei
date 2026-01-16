@@ -17,7 +17,7 @@ export default function ImpressumPage() {
             www.kunstakademie.art <br />
         </p>
         <p className="mb-6">
-            Vertretungsberechtigte Geschäftsführerin: Susanne Mix
+            Vertretungsberechtigter Vorstand: Susanne Mix, Isabell Rasch-Makarski
         </p>
     </section>
   );

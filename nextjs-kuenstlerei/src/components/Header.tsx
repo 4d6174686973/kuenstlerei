@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { 
@@ -29,7 +30,12 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="font-bold text-lg tracking-tight uppercase">
-          Künstlerei
+          <Image
+            src="/logo.png"
+            alt="Kunstakademie Würselen Logo"
+            width={120}
+            height={40}
+          />  
         </Link>
 
         {/* DESKTOP NAV - hidden on mobile */}

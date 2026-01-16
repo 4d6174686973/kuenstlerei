@@ -33,7 +33,7 @@ export default function KontaktPage() {
               <div>
                 <h3 className="font-bold mb-1 uppercase tracking-widest text-[10px] text-slate-500">Email</h3>
                 <a href="mailto:kunstakademie@online.de" className="text-lg hover:underline transition">
-                  kunstakademie@online.de
+                  kuenstlerei@online.de
                 </a>
               </div>
             </div>

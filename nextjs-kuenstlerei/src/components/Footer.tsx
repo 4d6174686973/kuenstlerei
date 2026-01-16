@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Facebook, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
@@ -13,7 +14,13 @@ export default function Footer() {
           {/* 1. Spalte: Branding & Mission */}
           <div className="space-y-4">
             <Link href="/" className="font-bold text-xl tracking-tighter uppercase">
-              Künstlerei
+              <Image 
+                src="/logo_invers.png"
+                alt="Kunstakademie Würselen Logo"
+                width={150}
+                height={60}
+                className="mb-2"
+              />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Kunstakademie Würselen e.V. – Ein Ort für Kreativität, Bildung und Gemeinschaft in Würselen.

@@ -1,6 +1,7 @@
 import { client } from "@/lib/sanity.client";
 import { HOME_LATEST_NEWS_QUERY, HOME_UPCOMING_EVENTS_QUERY } from "@/lib/sanity.queries";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, ArrowRight } from "lucide-react";
 
 export default async function IndexPage() {
@@ -13,14 +14,20 @@ export default async function IndexPage() {
   return (
     <div className="space-y-24 pb-20">
       
-      {/* --- HERO SEKTION --- */}
-      <section className="py-16 border-b border-gray-100">
-        <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-none mb-8">
-          Künstlerei<span className="text-slate-300">.</span>
-        </h1>
+      {/* --- TITEL SEKTION --- */}
+      <section className="py-12 border-b border-gray-100">
+        <Image 
+          src="/logo.png"
+          alt="Künstlerei Würselen Logo"
+          width={600}
+          height={200}
+          className="mb-8"
+        />
         <div className="max-w-2xl">
           <p className="text-xl md:text-2xl leading-tight mb-8 text-slate-700">
-            Akademie für Malerei und Grafik in Würselen. Entdecken Sie Raum für Experimente und handwerkliche Präzision.
+            Die Künstlerei <br />
+            Kunstschule für Groß und Klein im Zentrum von Würselen. <br /><br />
+            Mach dir dein eigenes Bild!
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/kursprogramm" className="px-8 py-4 bg-black text-white uppercase tracking-widest text-sm font-bold hover:bg-gray-800 transition">

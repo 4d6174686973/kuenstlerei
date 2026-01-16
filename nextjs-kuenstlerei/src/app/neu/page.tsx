@@ -4,6 +4,8 @@ import NeuigkeitenClient from "./NeuigkeitenClient";
 
 export const metadata = { title: 'Neu | Künstlerei' };
 
+export const dynamic = "force-dynamic";
+
 export default async function NeuPage() {
   const allNews = await client.fetch(NEU_LIST_QUERY);
   
