@@ -6,8 +6,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Künstlerei",
-  description: "Kunstakademie Würselen e.V.",
+  title: 'Künstlerei',
+  description: 'Kunstakademie Würselen e.V.',
+
+  appleWebApp: {
+    title: "Künstlerei",
+    statusBarStyle: "default",
+    capable: true,
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },                 // Klassisch (Fallback)
+      { url: '/icon1.png', type: 'image/png' }, // Desktop PNG 
+      { url: '/icon0.svg', type: 'image/svg+xml' }, // SVG 
+    ],
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
