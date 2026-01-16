@@ -21,20 +21,26 @@ export default function CardItem({
   badges = [],
 }: CardItemProps) {
   return (
-    <Card className="rounded-none border-gray-100 overflow-hidden group"> 
-      <CardContent className="flex flex-col md:flex-row gap-0 md:gap-6 p-0 md:pr-6">
+    <Card className="rounded-none p-0 border-gray-100 overflow-hidden group hover:border-gray-300 transition-all duration-300 shadow-none hover:shadow-sm"> 
+      <CardContent className="flex flex-col md:flex-row p-0">
+        
+        {/* BILD-CONTAINER */}
         {imageUrl && (
-          <div className="relative mx-6 md:w-32 h-32 aspect-square md:h-auto flex-shrink-0">
-            <Image
-              src={imageUrl}
-              alt={title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+          <div className="p-6 pr-0 flex-shrink-0 flex justify-center md:justify-start">
+            <div className="relative w-40 h-40 aspect-square overflow-hidden bg-gray-50">
+              <Image
+                src={imageUrl}
+                alt={title}
+                fill
+                sizes="160px"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
           </div>
         )}
 
-        <div className="flex flex-col gap-2 p-6 md:py-6 md:px-0">
+        {/* TEXT-BEREICH */}
+        <div className="flex flex-col justify-center p-6 gap-2">
           <div className="flex gap-2 flex-wrap mb-1">
             {badges.map((badge, index) => (
               <Badge 
@@ -46,14 +52,16 @@ export default function CardItem({
               </Badge>
             ))}
           </div>
-          <h3 className="text-xl md:text-2xl font-bold leading-tight tracking-tight break-words">
+
+          <h3 className="text-xl font-bold leading-tight tracking-tight">
             {title}
           </h3>
           
-          <span className="text-[11px] text-muted-foreground font-medium">
+          <p className="text-[12px] text-muted-foreground font-medium leading-relaxed line-clamp-2">
             {subtitle}
-          </span>
+          </p>
         </div>
+
       </CardContent>
     </Card>
   );
