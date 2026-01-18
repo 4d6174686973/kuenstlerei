@@ -53,7 +53,7 @@ export default function Footer() {
             <div className="space-y-4 text-sm text-gray-300">
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 mt-0.5 text-gray-500 shrink-0" />
-                <span>Kaiserstraße 29,<br />52146 Würselen</span>
+                <span>Kaiserstraße 29, 52146 Würselen</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-gray-500 shrink-0" />
