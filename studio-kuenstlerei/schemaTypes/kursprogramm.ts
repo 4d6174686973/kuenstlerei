@@ -33,8 +33,6 @@ export default defineType({
         ],
       }
     }),
-    defineField({ name: "tageszeit", title: "Tageszeit", type: "string",
-      description: "z.B. 'Nachmittags', oder feste Uhrzeit '16-17 Uhr'." }),
     defineField({ name: "kursleitung", title: "Kursleitung", type: "string"}),
     defineField({ name: "beschreibung", title: "Beschreibung", type: "text" }),
     defineField({

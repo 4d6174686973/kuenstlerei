@@ -69,9 +69,9 @@ export default async function KursDetailPage({ params }: PageProps) {
             </Badge>
           )}
 
-          {kurs.tageszeit && (
+          {kurs.sessions?.[0] && (
             <Badge className="rounded-none font-bold bg-indigo-50 text-indigo-700 hover:bg-indigo-50 border-none px-3 py-1">
-              {kurs.tageszeit}
+              {kurs.sessions[0].startUhrzeit} – {kurs.sessions[0].endUhrzeit} Uhr
             </Badge>
           )}
 

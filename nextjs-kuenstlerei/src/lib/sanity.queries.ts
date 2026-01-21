@@ -6,7 +6,6 @@ export const KURSE_LIST_QUERY = `
     name,
     altersempfehlung,
     wochentag,
-    tageszeit,
     kursleitung,
     preis,
     "slug": slug.current,
@@ -14,6 +13,8 @@ export const KURSE_LIST_QUERY = `
     "sessions": sessions[] | order(datum asc),
     "firstDate": (sessions[] | order(datum asc))[0].datum,
     "lastDate": (sessions[] | order(datum asc))[-1].datum,
+    "startTime": sessions[0].startUhrzeit,
+    "endTime": sessions[0].endUhrzeit,
     "isFinished": (sessions[] | order(datum asc))[-1].datum < now(),
   }
 `;
@@ -25,7 +26,6 @@ export const KURS_DETAIL_QUERY = `
     "image": image.asset->url,
     altersempfehlung,
     wochentag,
-    tageszeit,
     kursleitung,
     preis,
     beschreibung,
@@ -36,6 +36,8 @@ export const KURS_DETAIL_QUERY = `
     },
     "firstDate": (sessions[] | order(datum asc))[0].datum,
     "lastDate": (sessions[] | order(datum asc))[-1].datum,
+    "startTime": sessions[0].startUhrzeit,
+    "endTime": sessions[0].endUhrzeit,
     "isFinished": (sessions[] | order(datum asc))[-1].datum < now(),
     "verknuepfteNews": *[_type == "neu" && verlinkung._ref == ^._id] | order(publishDate desc) {
       _id,

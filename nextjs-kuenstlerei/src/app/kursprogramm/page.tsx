@@ -23,10 +23,18 @@ export default async function KursprogrammPage() {
   };
 
   const sortedKurse = [...kurse].sort((a, b) => {
-    const orderA = wochentagOrder[a.wochentag] || 99;
-    const orderB = wochentagOrder[b.wochentag] || 99;
-    
-    return orderA - orderB;
+    const dayA = a.wochentag?.trim() || "";
+    const dayB = b.wochentag?.trim() || "";
+    const orderA = wochentagOrder[dayA] || 99;
+    const orderB = wochentagOrder[dayB] || 99;
+
+    if (orderA !== orderB) return orderA - orderB;
+
+    // Sortierung nach der Startzeit der ersten Session
+    const timeA = a.startTime || "99:99";
+    const timeB = b.startTime || "99:99";
+
+    return timeA.localeCompare(timeB);
   });
 
   return (
@@ -77,10 +85,10 @@ export default async function KursprogrammPage() {
             });
           }
 
-          // Tageszeit hinzufügen
-          if (kurs.tageszeit) {
+          // Kurszeit hinzufügen
+          if (kurs.startTime && kurs.endTime) {
             dynamicBadges.push({
-              text: kurs.tageszeit,
+              text: `${kurs.startTime} – ${kurs.endTime} Uhr`,
               className: "bg-indigo-50 text-indigo-700 hover:bg-indigo-50" 
             });
           }
