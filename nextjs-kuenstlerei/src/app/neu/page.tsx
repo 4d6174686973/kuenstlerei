@@ -11,7 +11,7 @@ export default async function NeuPage() {
   
   return (
     <main className="max-w-6xl mx-auto py-12 min-h-screen">
-      <h1 className="text-4xl font-bold mb-12">Neuigkeiten & Events</h1>
+      <h1 className="text-4xl font-bold mb-12">Neues & Events</h1>
       <NeuigkeitenClient initialData={allNews} />
     </main>
   );
