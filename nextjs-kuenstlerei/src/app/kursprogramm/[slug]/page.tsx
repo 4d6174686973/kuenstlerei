@@ -103,7 +103,7 @@ export default async function KursDetailPage({ params }: PageProps) {
         {/* 2. VERKNÜPFTE NEUIGKEITEN UNTEN */}
         {kurs.verknuepfteNews && kurs.verknuepfteNews.length > 0 && (
           <section className="mt-20 pt-12 border-t border-gray-100">
-            <h2 className="text-2xl font-bold mb-8">Neuigkeiten zu diesem Kurs</h2>
+            <h2 className="text-2xl font-bold mb-8">Neues zu diesem Kurs</h2>
             <div className="space-y-4">
               {kurs.verknuepfteNews.map((news: any) => (
                 <Link 

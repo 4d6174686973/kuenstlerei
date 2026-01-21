@@ -17,7 +17,24 @@ export default defineType({
     defineField({name: 'image', title: 'Kursbild (Thumbnail)', type: 'image', options: {hotspot: true}}),
     defineField({ name: "altersempfehlung", title: "Altersempfehlung", type: "string", placeholder: "z.B. 7-9 Jahre" }),
     defineField({ name: "preis", title: "Preis (€)", type: "number" }),
-    defineField({ name: "wochentag", title: "Wochentag", type: "string", placeholder: "z.B. Mittwochs" }),
+    defineField({ 
+      name: "wochentag", 
+      title: "Wochentag", 
+      type: "string",
+      options: {
+        list: [
+          { title: "Montag", value: "Montag" },
+          { title: "Dienstag", value: "Dienstag" },
+          { title: "Mittwoch", value: "Mittwoch" },
+          { title: "Donnerstag", value: "Donnerstag" },
+          { title: "Freitag", value: "Freitag" },
+          { title: "Samstag", value: "Samstag" },
+          { title: "Sonntag", value: "Sonntag" },
+        ],
+      }
+    }),
+    defineField({ name: "tageszeit", title: "Tageszeit", type: "string",
+      description: "z.B. 'Nachmittags', oder feste Uhrzeit '16-17 Uhr'." }),
     defineField({ name: "kursleitung", title: "Kursleitung", type: "string"}),
     defineField({ name: "beschreibung", title: "Beschreibung", type: "text" }),
     defineField({

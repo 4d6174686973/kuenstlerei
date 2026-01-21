@@ -76,7 +76,7 @@ export default async function ProjektDetailPage({ params }: PageProps) {
       {/* 4. Verknüpfte Neuigkeiten */}
       {projekt.verknuepfteNews && projekt.verknuepfteNews.length > 0 && (
         <section className="mt-20 pt-12 border-t border-gray-100">
-          <h2 className="text-2xl font-bold mb-8">Neuigkeiten zu diesem Projekt</h2>
+          <h2 className="text-2xl font-bold mb-8">Neues zu diesem Projekt</h2>
           <div className="space-y-4">
             {projekt.verknuepfteNews.map((news: any) => (
               <Link 

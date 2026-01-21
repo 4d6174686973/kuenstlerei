@@ -6,6 +6,7 @@ export const KURSE_LIST_QUERY = `
     name,
     altersempfehlung,
     wochentag,
+    tageszeit,
     kursleitung,
     preis,
     "slug": slug.current,

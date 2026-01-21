@@ -9,7 +9,7 @@ type BadgeData = {
 
 type CardItemProps = {
   title: string;
-  subtitle: string;
+  subtitle: React.ReactNode;
   imageUrl?: string;
   badges?: BadgeData[];
 };
@@ -57,9 +57,9 @@ export default function CardItem({
             {title}
           </h3>
           
-          <p className="text-[12px] text-muted-foreground font-medium leading-relaxed line-clamp-2">
+          <div className="text-[12px] text-muted-foreground font-medium leading-relaxed">
             {subtitle}
-          </p>
+          </div>
         </div>
 
       </CardContent>
