@@ -25,6 +25,7 @@ export const KURS_DETAIL_QUERY = `
     "image": image.asset->url,
     altersempfehlung,
     wochentag,
+    tageszeit,
     kursleitung,
     preis,
     beschreibung,

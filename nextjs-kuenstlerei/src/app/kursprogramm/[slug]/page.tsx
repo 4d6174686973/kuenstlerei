@@ -49,21 +49,34 @@ export default async function KursDetailPage({ params }: PageProps) {
           </p>
         )}
 
-        {/* Badge-Leiste */}
+        {/* --- BADGE-LEISTE --- */}
         <div className="flex gap-2 mb-10 flex-wrap">
-          <Badge className="rounded-none bg-slate-100 text-slate-600 hover:bg-slate-100 border-none px-3 py-1">
-            {kurs.altersempfehlung}
-          </Badge>
-          <Badge className="rounded-none bg-stone-200 text-stone-700 hover:bg-stone-200 border-none px-3 py-1">
-            {kurs.preis} €
-          </Badge>
+          {kurs.altersempfehlung && (
+            <Badge className="rounded-none font-bold bg-slate-100 text-slate-600 hover:bg-slate-100 border-none px-3 py-1">
+              {kurs.altersempfehlung}
+            </Badge>
+          )}
+
+          {kurs.preis && (
+            <Badge className="rounded-none font-bold bg-stone-200 text-stone-700 hover:bg-stone-200 border-none px-3 py-1">
+              {kurs.preis} €
+            </Badge>
+          )}
+
           {kurs.wochentag && (
-            <Badge className="rounded-none bg-blue-50 text-blue-700 hover:bg-blue-50 border-none px-3 py-1">
+            <Badge className="rounded-none font-bold bg-blue-50 text-blue-700 hover:bg-blue-50 border-none px-3 py-1">
               {kurs.wochentag}
             </Badge>
           )}
+
+          {kurs.tageszeit && (
+            <Badge className="rounded-none font-bold bg-indigo-50 text-indigo-700 hover:bg-indigo-50 border-none px-3 py-1">
+              {kurs.tageszeit}
+            </Badge>
+          )}
+
           {kurs.isFinished && (
-            <Badge className="rounded-none bg-red-50 text-red-700 border border-red-100 hover:bg-red-50 px-3 py-1">
+            <Badge className="rounded-none font-bold bg-red-50 text-red-700 border border-red-100 hover:bg-red-50 px-3 py-1">
               Kurs beendet
             </Badge>
           )}
@@ -100,7 +113,7 @@ export default async function KursDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* 2. VERKNÜPFTE NEUIGKEITEN UNTEN */}
+        {/* VERKNÜPFTE NEUIGKEITEN */}
         {kurs.verknuepfteNews && kurs.verknuepfteNews.length > 0 && (
           <section className="mt-20 pt-12 border-t border-gray-100">
             <h2 className="text-2xl font-bold mb-8">Neues zu diesem Kurs</h2>
