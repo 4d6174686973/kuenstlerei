@@ -2,6 +2,8 @@ import { client } from "@/lib/sanity.client";
 import { TEAM_QUERY } from "@/lib/sanity.queries";
 import CardItem from "@/components/CardItem";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: 'Über Uns | Künstlerei',
 };
