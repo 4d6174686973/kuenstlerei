@@ -33,7 +33,7 @@ export default async function KontaktPage() {
             <div key={mitglied._id} className="w-full">
               <CardItem
                 title={mitglied.name}
-                subtitle={`${mitglied.email}${mitglied.handynummer ? ` | ${mitglied.handynummer}` : ''}`}
+                subtitle={[mitglied.email, mitglied.handynummer].filter(Boolean).join(" | ")}
                 imageUrl={mitglied.fotoUrl}
                 badges={[
                   { 
