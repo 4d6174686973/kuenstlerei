@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, ArrowRight } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function IndexPage() {
   // Daten parallel vom Sanity Client holen
   const [latestNews, upcomingEvents] = await Promise.all([

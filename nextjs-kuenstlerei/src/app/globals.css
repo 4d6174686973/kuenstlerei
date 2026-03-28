@@ -123,3 +123,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Mobile-first: This applies to everything by default */
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+
+/* Desktop: These kick in when the screen is wider than 768px */
+@media (min-width: 768px) {
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 2.25rem; }
+}
+
