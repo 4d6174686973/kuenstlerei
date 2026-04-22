@@ -30,6 +30,18 @@ export default defineType({
         }),
       ],
     }),
+    defineField({ 
+      name: "song", 
+      title: "Song (Audio)", 
+      type: "file", 
+      options: { accept: "audio/*" } 
+    }),
+    defineField({ 
+      name: "youtubeVideo", 
+      title: "YouTube Video URL", 
+      type: "url",
+      description: "Füge hier den YouTube Link ein (z.B. https://www.youtube.com/watch?v=...)"
+    }),
   ],
   preview: {
     select: { title: "titel", subtitle: "publishDate", media: "image" },

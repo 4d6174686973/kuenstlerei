@@ -117,6 +117,8 @@ export const NEU_DETAIL_QUERY = `
     kategorien,
     beschreibung,
     "galerie": fotogalerie[].asset->url,
+    "songUrl": song.asset->url,
+    youtubeVideo,
     "referenz": verlinkung-> {
       name,
       "slug": slug.current,

@@ -9,6 +9,14 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// Helper for youtube embed URL
+const getYoutubeEmbedUrl = (url: string) => {
+  if (!url) return null;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
+};
+
 export default async function NeuigkeitDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const news = await client.fetch(NEU_DETAIL_QUERY, { slug });
@@ -64,6 +72,36 @@ export default async function NeuigkeitDetailPage({ params }: PageProps) {
                   <img src={imgUrl} alt="Galerie" className="w-full h-full object-cover max-h-[600px]" />
                 </div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* Song (Audio Player) */}
+        {news.songUrl && (
+          <section className="mb-12">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">Audio</h3>
+            <audio controls className="w-full rounded-full outline-none">
+              <source src={news.songUrl} type="audio/mpeg" />
+              Dein Browser unterstützt das Audio-Element nicht.
+            </audio>
+          </section>
+        )}
+
+        {/* YouTube Video (Embedded iframe) */}
+        {news.youtubeVideo && getYoutubeEmbedUrl(news.youtubeVideo) && (
+          <section className="mb-12">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">Video</h3>
+            <div className="aspect-video w-full overflow-hidden rounded-lg shadow-sm">
+              <iframe
+                width="100%"
+                height="100%"
+                src={getYoutubeEmbedUrl(news.youtubeVideo) as string}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
             </div>
           </section>
         )}
